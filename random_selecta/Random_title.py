@@ -109,12 +109,26 @@ if st.button("Generate Track", type="primary", use_container_width=True):
                 col1, col2 = st.columns([0.3, 0.7], gap="large")
                 with col1: 
                     st.write(f"#### **{title}**")
-                    if result['labels']:
-                        for label in result['labels']:
-                            if label['url']:
-                                st.write(f"**Label**: [{label['name']}]({label['url']})")
-                            else:
-                                st.write(f"**Label**: {label['name']}")
+
+                    # Suppression des doublons de labels (même nom et même url)
+                    seen = set()
+                    unique_labels = []
+                    for label in result['labels']:
+                        key = (label['name'], label['url'])
+                        if key not in seen:
+                            unique_labels.append(label)
+                            seen.add(key)
+                    
+                    label_links = []
+                    for label in unique_labels:
+                        if label['url']:
+                            label_links.append(f"[{label['name']}]({label['url']})")
+                        else:
+                            label_links.append(label['name'])
+                    label_str = ", ".join(label_links)
+                    st.write(f"**Label**: {label_str}", unsafe_allow_html=True)
+
+
                     if image:
                         st.image(image, use_container_width=True)
                     else:
