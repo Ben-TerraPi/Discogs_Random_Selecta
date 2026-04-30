@@ -17,9 +17,7 @@ https://www.discogs.com/developers/
 https://python3-discogs-client.readthedocs.io/en/latest/index.html
 
 
-# À propos de moi:
-
-Je suis passionné de musique et collectionneur de vinyles. Discogs est un site où je passe beaucoup de temps. Suite à une formation de Data Analyst, il était évident que, pour mon premier projet personnel, j'allais combiner ces deux centres d'intérêt.
+Étant passionné de musique et collectionneur de vinyles. Discogs est un site où je passe beaucoup de temps. Suite à une formation de Data Analyst, il était évident que, pour mon premier projet personnel, j'allais combiner ces deux centres d'intérêt.
 
 Au départ, ma volonté était de simplement lister ma collection en utilisant Python et l'API de Discogs. Il s'est vite avéré que j'avais envie d'aller plus loin.
 
