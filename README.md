@@ -1,4 +1,4 @@
-# À propos :  ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Discogs-logo-billboard-1548-1092x722.jpg/320px-Discogs-logo-billboard-1548-1092x722.jpg)
+# À propos :  ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Discogs_logo_black.svg/1920px-Discogs_logo_black.svg.png)
 
 Discogs est l'une des plus grandes bases de données en ligne répertoriant les productions musicales de tous genres publiées sur tous les types de supports, vinyles, CD, cassettes audio, 78 tours, etc.
 
