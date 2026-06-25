@@ -24,7 +24,7 @@ Au départ, ma volonté était de simplement lister ma collection en utilisant P
 3 étapes, 3 dossiers.
 
 
-# 1ère étape [my_collection](https://github.com/Ben-TerraPi/Discogs/tree/main/my_collection) : 
+# 1ère étape > [my_collection](https://github.com/Ben-TerraPi/Discogs/tree/main/my_collection) : 
 
 ## [scrap_discogs.py](https://github.com/Ben-TerraPi/Discogs/tree/main/my_collection/scrap_discogs.py)
 
@@ -239,7 +239,7 @@ Les étapes de travail sur BigQuery sont visibles sur cette page [Notion](https:
 Le dashboard réalisé est visible directement sur [Looker Studio](https://lookerstudio.google.com/reporting/9555dbd8-4aef-4ba4-8924-44840306f7b6)
 
 
-# 2ème étape [tests](https://github.com/Ben-TerraPi/Discogs/tree/main/tests) : 
+# 2ème étape > [tests](https://github.com/Ben-TerraPi/Discogs/tree/main/tests) : 
 
 J'utilise ce dossier pour tester différentes recherches et fonctions.
 
@@ -351,7 +351,7 @@ api_key = st.secrets["youtube"]["api_key"]
 
 Et [requirements.txt](https://github.com/Ben-TerraPi/Discogs/blob/main/requirements.txt) à la racine du projet.
 
-# 3ème étape [random_selecta](https://github.com/Ben-TerraPi/Discogs/tree/main/random_selecta) : 
+# 3ème étape > [random_selecta](https://github.com/Ben-TerraPi/Discogs/tree/main/random_selecta) : 
 
 Dans ce dossier on retrouve:
 
