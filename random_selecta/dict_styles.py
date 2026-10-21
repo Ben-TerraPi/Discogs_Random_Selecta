@@ -1,8 +1,5 @@
-#%%
 import pandas as pd
-# import pandas_gbq
-
-#%%
+import pandas_gbq
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Rock
 
@@ -701,7 +698,6 @@ military_style = [
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Disct
 
-#%%
 genres_styles = {
     "Rock" : rock_style,
     "Electronic" : electronic_style,
@@ -720,35 +716,19 @@ genres_styles = {
     "Brass & Military " : military_style
     }
 
-     
 
-print("list_styles.py loaded successfully")
+#Création tableau
+tableau_genre = pd.DataFrame.from_dict(genres_styles, orient='index').transpose()
 
-#%%
-# #Création tableau
-# tableau_genre = pd.DataFrame.from_dict(genres_styles, orient='index').transpose()
+tableau_genre.to_csv("data/tableau_genre.csv")
 
-# tableau_genre.to_csv("tableau_genre.csv")
+print("tableau créé")
 
-# print("tableau créé")
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>> TO bigquery
+project_id = "discogs-random-selecta"
+table_id = "discogs-random-selecta.my_data.tableau_genre"
 
-# #%%
-# #>>>>>>>>>>>>>>>>>>>>>>>>>>>> TO bigquery
-# project_id = "discogs-random-selecta"
-# table_id = "discogs-random-selecta.my_data.tableau_genre"
+pandas_gbq.to_gbq(tableau_genre, table_id, project_id, if_exists="replace")
 
-# pandas_gbq.to_gbq(tableau_genre, table_id, project_id)
-
-# print("tableau exporté")
-
-
-#%%
-genres_styles.values()
-
-#%%
-genres_styles["Electronic"]
-
-#%%
-
-# %%
+print("tableau exporté")
 
