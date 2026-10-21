@@ -1,11 +1,10 @@
-"""utils.py – Discogs Random Selecta
+"""helpers.py – Discogs Random Selecta
 
 Tirage aléatoire d'une release Discogs (recherche ou collection d'un utilisateur),
 avec priorité aux vidéos Discogs et recherche YouTube en secours.
 """
 import json
 import logging
-import os
 import random
 import re
 import unicodedata
@@ -77,12 +76,14 @@ def artist_and_title_in_video(video_title: str, artist: str, title: str) -> bool
 # ---------------------------------------------------------------------------
 # Tirage aléatoire (recherche OU collection)
 # ---------------------------------------------------------------------------
-def _search_releases(genre, style=None, year=None):
+def _search_releases(genre, style=None, year=None, country=None):
     params = {"genre": genre, "type": "release"}
     if style:
         params["style"] = style
     if year:
         params["year"] = year
+    if country:
+        params["country"] = country
     return d.search(**params)
 
 
@@ -102,12 +103,6 @@ def _pick_unseen(paginated, seen, max_tries=10):
         if item.id not in seen:
             return item
     return item   # tout ou presque déjà vu : on renvoie le dernier tirage
-
-
-def list_folders(username=None):
-    """[(id, nom, nb_releases)] des dossiers de collection (username vide = moi)."""
-    user = d.user(username.strip()) if username else d.identity()
-    return [(f.id, f.name, f.count) for f in user.collection_folders]
 
 
 # ---------------------------------------------------------------------------
@@ -200,22 +195,21 @@ def build_result(album, nb_results=1) -> dict:
 # ---------------------------------------------------------------------------
 # Point d'entrée pour l'app
 # ---------------------------------------------------------------------------
-def draw(mode, seen, genre=None, style=None, year=None, username=None, folder_id=0):
+def draw(mode, seen, genre=None, style=None, year=None, country=None, username=None):
     """mode : 'database' | 'collection' (username vide = ma propre collection)."""
     if mode == "database":
-        results = _search_releases(genre, style, year)
+        results = _search_releases(genre, style, year, country)
         album = _pick_unseen(results, seen)
         nb = results.count
     else:  # 'collection'
         user = d.user(username.strip()) if username else d.identity()
-        folders = user.collection_folders
-        folder = next((f for f in folders if f.id == folder_id), folders[0])  # 0 = "All"
+        folder = user.collection_folders[0]            # dossier 0 = "All"
         item = _pick_unseen(folder.releases, seen)
         album = item.release if item else None
         nb = folder.count
     return build_result(album, nb) if album else None
 
 
-def random_youtube(genre, style=None, year=None):
+def random_youtube(genre, style=None, year=None, country=None):
     """Compatibilité avec l'ancienne signature."""
-    return draw("database", set(), genre=genre, style=style, year=year)
+    return draw("database", set(), genre=genre, style=style, year=year, country=country)

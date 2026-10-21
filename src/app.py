@@ -1,7 +1,8 @@
 import streamlit as st
 from datetime import datetime
 from dict_styles import genres_styles
-from helpers import draw, list_folders, load_seen, save_seen
+from dict_countries import countries
+from helpers import draw, load_seen, save_seen
 
 st.set_page_config(page_title="Discogs Random Selecta", page_icon="🎧",
                    layout="wide", initial_sidebar_state="expanded")
@@ -11,11 +12,6 @@ ss = st.session_state
 ss.setdefault("current", None)               # résultat affiché
 ss.setdefault("history", [])                 # derniers résultats (le plus récent en premier)
 ss.setdefault("seen", load_seen())           # IDs déjà tirés (persistés dans data/seen_ids.json)
-
-@st.cache_data(ttl=600, show_spinner=False)
-def cached_folders(username):
-    return list_folders(username or None)
-
 
 # ---------- Sidebar ----------
 with st.sidebar:
@@ -38,24 +34,18 @@ st.write("#### Digging for tracks on Discogs database!")
 mode_label = st.radio("Source", ["Discogs database", "User collection"], horizontal=True)
 mode = {"Discogs database": "database", "User collection": "collection"}[mode_label]
 
-genre = style = year = username = None
-folder_id = 0
+genre = style = year = country = username = None
 if mode == "database":
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3, c4 = st.columns(4)
     genre = c1.selectbox("Select genre", list(genres_styles.keys()), index=None)
     style = c2.selectbox("Select style (optional)", genres_styles.get(genre, []), index=None)
     year = c3.selectbox("Select release year (optional)",
                         list(range(datetime.now().year, 1950, -1)), index=None)
+    country = c4.selectbox("Select country (optional)", countries, index=None)
 else:
-    username = st.text_input("Discogs username (empty = creator collection)",
+    username = st.text_input("Discogs username (empty = Creator collection)",
                              help="Visible in the profile URL: discogs.com/user/<username>. "
                                   "The collection must be public.")
-    try:
-        folders = cached_folders(username)
-        choice = st.selectbox("Folder", folders, format_func=lambda f: f"{f[1]} ({f[2]})")
-        folder_id = choice[0]
-    except Exception as e:
-        st.warning(f"Could not load folders: {e}")
 
 # ---------- Action ----------
 if st.button("Generate Track", type="primary", use_container_width=True):
@@ -65,8 +55,7 @@ if st.button("Generate Track", type="primary", use_container_width=True):
         with st.spinner("Digging..."):
             try:
                 result = draw(mode, ss.seen, genre=genre, style=style,
-                              year=year, username=username,
-                              folder_id=folder_id)
+                              year=year, country=country, username=username)
             except Exception as e:             # à affiner (HTTPError 429, 404...)
                 result = None
                 st.error(f"Discogs error: {e}")
