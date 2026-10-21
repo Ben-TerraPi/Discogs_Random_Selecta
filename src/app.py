@@ -47,7 +47,7 @@ if mode == "database":
     year = c3.selectbox("Select release year (optional)",
                         list(range(datetime.now().year, 1950, -1)), index=None)
 else:
-    username = st.text_input("Discogs username (empty = my collection)",
+    username = st.text_input("Discogs username (empty = creator collection)",
                              help="Visible in the profile URL: discogs.com/user/<username>. "
                                   "The collection must be public.")
     try:
