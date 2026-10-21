@@ -1,5 +1,5 @@
-import pandas as pd
-import pandas_gbq
+# import pandas as pd
+# import pandas_gbq
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Rock
 
@@ -717,18 +717,18 @@ genres_styles = {
     }
 
 
-#Création tableau
-tableau_genre = pd.DataFrame.from_dict(genres_styles, orient='index').transpose()
+# #Création tableau
+# tableau_genre = pd.DataFrame.from_dict(genres_styles, orient='index').transpose()
 
-tableau_genre.to_csv("data/tableau_genre.csv")
+# tableau_genre.to_csv("data/tableau_genre.csv")
 
-print("tableau créé")
+# print("tableau créé")
 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>> TO bigquery
-project_id = "discogs-random-selecta"
-table_id = "discogs-random-selecta.my_data.tableau_genre"
+# #>>>>>>>>>>>>>>>>>>>>>>>>>>>> TO bigquery
+# project_id = "discogs-random-selecta"
+# table_id = "discogs-random-selecta.my_data.tableau_genre"
 
-pandas_gbq.to_gbq(tableau_genre, table_id, project_id, if_exists="replace")
+# pandas_gbq.to_gbq(tableau_genre, table_id, project_id, if_exists="replace")
 
-print("tableau exporté")
+# print("tableau exporté")
 
