@@ -135,11 +135,11 @@ Et [requirements.txt](https://github.com/Ben-TerraPi/Discogs/blob/main/requireme
 
 Dans ce dossier on retrouve:
 
-* [utils.py](https://github.com/Ben-TerraPi/Discogs/blob/main/random_selecta/utils.py), regroupe toutes mes fonctions issues de la même base.
+* [utils.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/utils.py), regroupe toutes mes fonctions issues de la même base.
 
-* [Random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/random_selecta/Random_title.py), sert au lancement de l'application Streamlit.
+* [Random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/random_title.py), sert au lancement de l'application Streamlit.
 
-* [list_styles.py](https://github.com/Ben-TerraPi/Discogs/blob/main/random_selecta/list_styles.py), dans lequelle j'ai créé les listes et un dictionnaire pour chaques styles musicaux présent dans chaques genres musicaux référencés par Discogs, cela sera intégré pour les selectbox sur streamlit.
+* [list_styles.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/dict_styles.py), dans lequelle j'ai créé les listes et un dictionnaire pour chaques styles musicaux présent dans chaques genres musicaux référencés par Discogs, cela sera intégré pour les selectbox sur streamlit.
 
 ```
 genres_styles = {
@@ -165,7 +165,7 @@ tableau_genre = pd.DataFrame.from_dict(genres_styles, orient='index').transpose(
 
 tableau_genre.to_csv("tableau_genre.csv")
 ```
-Est créé le [tableau_genre.csv](https://github.com/Ben-TerraPi/Discogs/blob/main/tableau_genre.csv)
+Est créé le [tableau_genre.csv](https://github.com/Ben-TerraPi/Discogs/blob/main/data/tableau_genre.csv)
 
 ## Fonction final pour Streamlit
 
@@ -251,7 +251,7 @@ print("utils.py loaded successfully")
 
 # Conclusion
 
-Arrivé à ce stade je vous laisse analyser la struture du fichier streamlit [Random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/random_selecta/Random_title.py)  et tester le résultat:
+Arrivé à ce stade je vous laisse analyser la struture du fichier streamlit [Random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/random_title.py)  et tester le résultat:
 
 https://discogs-random-selecta.streamlit.app/
 
