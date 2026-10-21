@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime
-from random_selecta.dict_styles import genres_styles
+from src.dict_styles import genres_styles
 from utils import random_youtube
 
 
