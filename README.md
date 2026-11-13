@@ -258,25 +258,7 @@ https://discogs-random-selecta.streamlit.app/
 
 EDIT : 
 
-La version en ligne est la v2.0 développé avec l'aide de claude pour les ajouts suivant :
+La version en ligne est la v2.0 développé avec l'aide de claude pour les ajouts suivant : voir [app.py](https://github.com/Ben-TerraPi/Discogs_Random_Selecta/blob/main/src/app.py)
 - un critère de recherche pays
 - historique des recherches
 - recherche aléatoire dans la collection d'un utilisateur
-
-  
-voir [app.py](https://github.com/Ben-TerraPi/Discogs_Random_Selecta/blob/main/src/app.py)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
