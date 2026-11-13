@@ -131,7 +131,7 @@ api_key = st.secrets["youtube"]["api_key"]
 
 Et [requirements.txt](https://github.com/Ben-TerraPi/Discogs/blob/main/requirements.txt) à la racine du projet.
 
-# > [random_selecta](https://github.com/Ben-TerraPi/Discogs/tree/main/random_selecta) : 
+# > src : 
 
 Dans ce dossier on retrouve:
 
