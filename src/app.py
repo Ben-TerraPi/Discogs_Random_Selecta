@@ -17,7 +17,7 @@ ss.setdefault("seen", load_seen())           # IDs déjà tirés (persistés dan
 with st.sidebar:
     st.image("image/logo.jpg")
     st.divider()
-    st.caption("About:")
+    st.caption("About: v2.0")
     st.write("Discogs Random Selecta queries the Discogs database and shows a random release "
              "with an embedded video (Discogs first, YouTube as a fallback).")
     st.divider()

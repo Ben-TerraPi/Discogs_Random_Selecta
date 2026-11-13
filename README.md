@@ -137,7 +137,7 @@ Dans ce dossier on retrouve:
 
 * [utils.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/utils.py), regroupe toutes mes fonctions issues de la même base.
 
-* [Random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/random_title.py), sert au lancement de l'application Streamlit.
+* [random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/random_title.py), sert au lancement de l'application Streamlit.
 
 * [list_styles.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/dict_styles.py), dans lequelle j'ai créé les listes et un dictionnaire pour chaques styles musicaux présent dans chaques genres musicaux référencés par Discogs, cela sera intégré pour les selectbox sur streamlit.
 
@@ -251,9 +251,15 @@ print("utils.py loaded successfully")
 
 # Conclusion
 
-Arrivé à ce stade je vous laisse analyser la struture du fichier streamlit [Random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/random_title.py)  et tester le résultat:
+Arrivé à ce stade je vous laisse analyser la struture du fichier streamlit [random_title.py](https://github.com/Ben-TerraPi/Discogs/blob/main/src/random_title.py)  et tester le résultat:
 
 https://discogs-random-selecta.streamlit.app/
+
+
+EDIT : 
+
+La version en ligne est la v2.0 développé avec l'aide de claude (ajout d'un critère de recherche pays plus historique) 
+voir [app.py](https://github.com/Ben-TerraPi/Discogs_Random_Selecta/blob/main/src/app.py)
 
 
 
